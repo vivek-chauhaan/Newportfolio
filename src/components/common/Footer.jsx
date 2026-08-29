@@ -1,19 +1,42 @@
-import { FiGithub, FiLinkedin, FiTwitter, FiMail, FiCode, FiArrowRight, FiSend } from 'react-icons/fi'
-import { SiLeetcode } from 'react-icons/si'
-import { Link } from 'react-router-dom'
-import useFetch from '../../hooks/useFetch.js'
-import socialLinkService from '../../services/socialLinkService.js'
-import aboutService from '../../services/aboutService.js'
-import { NAV_LINKS } from '../../constants/navLinks.js'
-import logoImg from '../../assets/images/logo.png'
+import {
+  FiGithub,
+  FiLinkedin,
+  FiTwitter,
+  FiMail,
+  FiCode,
+  FiArrowRight,
+  FiSend,
+} from "react-icons/fi";
 
-const ICONS = { github: FiGithub, linkedin: FiLinkedin, twitter: FiTwitter, email: FiMail, mail: FiMail, leetcode: SiLeetcode }
+import { Link } from "react-router-dom";
+import useFetch from "../../hooks/useFetch.js";
+import socialLinkService from "../../services/socialLinkService.js";
+import aboutService from "../../services/aboutService.js";
+import { NAV_LINKS } from "../../constants/navLinks.js";
+import logoImg from "../../assets/images/logo.png";
+
+const ICONS = {
+  github: FiGithub,
+  linkedin: FiLinkedin,
+  twitter: FiTwitter,
+  email: FiMail,
+  mail: FiMail,
+};
 
 export default function Footer() {
-  const { data: links } = useFetch(() => socialLinkService.getAll(), [])
-  const { data: about } = useFetch(() => aboutService.get(), [])
+  const { data: links } = useFetch(() => socialLinkService.getAll(), []);
+  const { data: about } = useFetch(() => aboutService.get(), []);
 
-  const techBadges = ['Java 21', 'Spring Boot', 'React', 'Microservices', 'MongoDB', 'Docker', 'REST APIs', 'JWT Auth']
+  const techBadges = [
+    "React.js",
+    "JavaScript",
+    "Node.js",
+    "Express.js",
+    "MongoDB",
+    "REST APIs",
+    "JWT Auth",
+    "TailwindCSS",
+  ];
 
   return (
     <footer className="mt-12 md:mt-16 border-t border-slate-200/80 dark:border-white/10 relative overflow-hidden backdrop-blur-xl bg-slate-50/80 dark:bg-bg-dark/80 text-slate-600 dark:text-slate-400">
@@ -29,7 +52,8 @@ export default function Footer() {
               Have a project or opportunity in mind?
             </h3>
             <p className="text-xs text-slate-600 dark:text-slate-300">
-              Let's collaborate to build high-performance backends and modern web applications.
+              Let's collaborate to build high-performance backends and modern
+              web applications.
             </p>
           </div>
           <a
@@ -45,19 +69,25 @@ export default function Footer() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-6 lg:gap-8 pb-8 border-b border-slate-200/80 dark:border-white/10">
           {/* Column 1: Branding & Live Status (4 cols) */}
           <div className="lg:col-span-4 space-y-3">
-            <Link to="/" className="font-display font-extrabold text-xl tracking-tight flex items-center gap-2.5 text-slate-900 dark:text-white group">
+            <Link
+              to="/"
+              className="font-display font-extrabold text-xl tracking-tight flex items-center gap-2.5 text-slate-900 dark:text-white group"
+            >
               <div className="relative p-0.5 rounded-xl bg-gradient-to-tr from-primary via-indigo-500 to-secondary shadow-md shadow-primary/20 group-hover:scale-105 transition-transform duration-300 overflow-hidden flex items-center justify-center">
                 <img
                   src={logoImg}
-                  alt="Amit Kumar Logo"
+                  alt="vivek Kumar Logo"
                   className="h-8 w-auto max-w-[120px] object-contain rounded-[10px] bg-slate-950 px-1 py-0.5"
                 />
               </div>
-              <span className="whitespace-nowrap">{about?.fullName?.split(' ')[0] || 'Amit'}.dev</span>
+              <span className="whitespace-nowrap">
+                {about?.fullName?.split(" ")[0] || "Vivek"}.dev
+              </span>
             </Link>
 
             <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed max-w-sm">
-              Engineering robust Java Spring Boot microservices, high-speed REST APIs, and modern React interfaces.
+              Full Stack MERN Developer focused on building scalable web
+              applications, secure REST APIs, and responsive user experiences.
             </p>
 
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-[11px] font-semibold">
@@ -78,7 +108,9 @@ export default function Footer() {
                     to={link.to}
                     className="hover:text-primary dark:hover:text-primary-light transition-colors duration-200 flex items-center gap-1 group"
                   >
-                    <span className="text-primary opacity-0 group-hover:opacity-100 transition-opacity">›</span>
+                    <span className="text-primary opacity-0 group-hover:opacity-100 transition-opacity">
+                      ›
+                    </span>
                     <span>{link.label}</span>
                   </Link>
                 </li>
@@ -115,14 +147,19 @@ export default function Footer() {
                 className="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-white dark:bg-white/[0.06] border border-slate-200/80 dark:border-white/10 text-xs font-semibold text-slate-800 dark:text-slate-200 hover:text-primary dark:hover:text-primary-light hover:border-primary/50 transition-all duration-300 shadow-2xs group max-w-full"
                 title="Send Email"
               >
-                <FiMail className="text-primary shrink-0 group-hover:scale-110 transition-transform" size={15} />
-                <span className="whitespace-nowrap font-mono text-[11px] sm:text-xs tracking-tight">{about.email}</span>
+                <FiMail
+                  className="text-primary shrink-0 group-hover:scale-110 transition-transform"
+                  size={15}
+                />
+                <span className="whitespace-nowrap font-mono text-[11px] sm:text-xs tracking-tight">
+                  {about.email}
+                </span>
               </a>
             )}
 
             <div className="flex flex-wrap gap-2 pt-0.5">
               {(links || []).map((link) => {
-                const Icon = ICONS[link.icon?.toLowerCase()] || FiSend
+                const Icon = ICONS[link.icon?.toLowerCase()] || FiSend;
                 return (
                   <a
                     key={link.id}
@@ -135,7 +172,7 @@ export default function Footer() {
                   >
                     <Icon size={14} />
                   </a>
-                )
+                );
               })}
             </div>
           </div>
@@ -144,7 +181,8 @@ export default function Footer() {
         {/* Footer Bottom */}
         <div className="pt-5 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs font-medium text-slate-500 dark:text-slate-400">
           <p>
-            &copy; {new Date().getFullYear()} {about?.fullName || 'Amit Kumar'}. All rights reserved.
+            &copy; {new Date().getFullYear()} {about?.fullName || "Amit Kumar"}.
+            All rights reserved.
           </p>
           <p className="text-[11px] text-slate-400 dark:text-slate-500">
             Crafted with Engineering Excellence & Precision
@@ -152,5 +190,5 @@ export default function Footer() {
         </div>
       </div>
     </footer>
-  )
+  );
 }

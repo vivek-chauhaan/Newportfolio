@@ -1,44 +1,60 @@
-import { useState } from 'react'
-import toast from 'react-hot-toast'
-import { FiMail, FiPhone, FiMapPin, FiSend, FiCopy, FiCheck, FiLinkedin, FiGithub } from 'react-icons/fi'
-import SectionTitle from '../../components/common/SectionTitle.jsx'
-import PrimaryButton from '../../components/buttons/PrimaryButton.jsx'
-import useFetch from '../../hooks/useFetch.js'
-import aboutService from '../../services/aboutService.js'
-import contactService from '../../services/contactService.js'
+import { useState } from "react";
+import toast from "react-hot-toast";
+import {
+  FiMail,
+  FiPhone,
+  FiMapPin,
+  FiSend,
+  FiCopy,
+  FiCheck,
+  FiLinkedin,
+  FiGithub,
+} from "react-icons/fi";
+import SectionTitle from "../../components/common/SectionTitle.jsx";
+import PrimaryButton from "../../components/buttons/PrimaryButton.jsx";
+import useFetch from "../../hooks/useFetch.js";
+import aboutService from "../../services/aboutService.js";
+import contactService from "../../services/contactService.js";
 
-const initialForm = { name: '', email: '', phone: '', subject: '', message: '' }
+const initialForm = {
+  name: "",
+  email: "",
+  phone: "",
+  subject: "",
+  message: "",
+};
 
 export default function ContactSection() {
-  const { data: about } = useFetch(() => aboutService.get(), [])
-  const [form, setForm] = useState(initialForm)
-  const [submitting, setSubmitting] = useState(false)
-  const [copied, setCopied] = useState(false)
+  const { data: about } = useFetch(() => aboutService.get(), []);
+  const [form, setForm] = useState(initialForm);
+  const [submitting, setSubmitting] = useState(false);
+  const [copied, setCopied] = useState(false);
 
-  const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value })
+  const handleChange = (e) =>
+    setForm({ ...form, [e.target.name]: e.target.value });
 
   const handleCopyEmail = () => {
     if (about?.email) {
-      navigator.clipboard.writeText(about.email)
-      setCopied(true)
-      toast.success('Email copied to clipboard!')
-      setTimeout(() => setCopied(false), 2000)
+      navigator.clipboard.writeText(about.email);
+      setCopied(true);
+      toast.success("Email copied to clipboard!");
+      setTimeout(() => setCopied(false), 2000);
     }
-  }
+  };
 
   const handleSubmit = async (e) => {
-    e.preventDefault()
-    setSubmitting(true)
+    e.preventDefault();
+    setSubmitting(true);
     try {
-      await contactService.submit(form)
-      toast.success("Message sent! I'll get back to you soon.")
-      setForm(initialForm)
+      await contactService.submit(form);
+      toast.success("Message sent! I'll get back to you soon.");
+      setForm(initialForm);
     } catch {
-      toast.error('Something went wrong. Please try again.')
+      toast.error("Something went wrong. Please try again.");
     } finally {
-      setSubmitting(false)
+      setSubmitting(false);
     }
-  }
+  };
 
   return (
     <section id="contact" className="max-w-7xl mx-auto px-5 md:px-8 py-24">
@@ -56,7 +72,8 @@ export default function ContactSection() {
               Contact Information
             </h3>
             <p className="text-xs text-slate-500 dark:text-slate-400">
-              Feel free to reach out via email, social networks, or by submitting the contact form.
+              Feel free to reach out via email, social networks, or by
+              submitting the contact form.
             </p>
 
             {about?.email && (
@@ -66,8 +83,12 @@ export default function ContactSection() {
                     <FiMail />
                   </span>
                   <div>
-                    <p className="text-[10px] font-semibold text-slate-400 uppercase">Email</p>
-                    <p className="font-bold text-slate-800 dark:text-slate-200 text-xs">{about.email}</p>
+                    <p className="text-[10px] font-semibold text-slate-400 uppercase">
+                      Email
+                    </p>
+                    <p className="font-bold text-slate-800 dark:text-slate-200 text-xs">
+                      {about.email}
+                    </p>
                   </div>
                 </div>
                 <button
@@ -76,7 +97,11 @@ export default function ContactSection() {
                   className="p-2 rounded-lg hover:bg-slate-200 dark:hover:bg-white/10 text-slate-500 transition-colors"
                   title="Copy email address"
                 >
-                  {copied ? <FiCheck className="text-emerald-500" /> : <FiCopy />}
+                  {copied ? (
+                    <FiCheck className="text-emerald-500" />
+                  ) : (
+                    <FiCopy />
+                  )}
                 </button>
               </div>
             )}
@@ -87,8 +112,12 @@ export default function ContactSection() {
                   <FiPhone />
                 </span>
                 <div>
-                  <p className="text-[10px] font-semibold text-slate-400 uppercase">Phone</p>
-                  <p className="font-bold text-slate-800 dark:text-slate-200 text-xs">{about.phone}</p>
+                  <p className="text-[10px] font-semibold text-slate-400 uppercase">
+                    Phone
+                  </p>
+                  <p className="font-bold text-slate-800 dark:text-slate-200 text-xs">
+                    {about.phone}
+                  </p>
                 </div>
               </div>
             )}
@@ -99,8 +128,12 @@ export default function ContactSection() {
                   <FiMapPin />
                 </span>
                 <div>
-                  <p className="text-[10px] font-semibold text-slate-400 uppercase">Location</p>
-                  <p className="font-bold text-slate-800 dark:text-slate-200 text-xs">{about.address}</p>
+                  <p className="text-[10px] font-semibold text-slate-400 uppercase">
+                    Location
+                  </p>
+                  <p className="font-bold text-slate-800 dark:text-slate-200 text-xs">
+                    {about.address}
+                  </p>
                 </div>
               </div>
             )}
@@ -142,7 +175,7 @@ export default function ContactSection() {
                 name="name"
                 value={form.name}
                 onChange={handleChange}
-                placeholder="Jane Doe"
+                placeholder="Enter your name"
                 className="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-white/[0.05] border border-slate-200 dark:border-white/10 text-slate-900 dark:text-white placeholder:text-slate-400 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all"
               />
             </div>
@@ -156,7 +189,7 @@ export default function ContactSection() {
                 name="email"
                 value={form.email}
                 onChange={handleChange}
-                placeholder="er.amitkumar9129@gmail.com"
+                placeholder="enter yor email"
                 className="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-white/[0.05] border border-slate-200 dark:border-white/10 text-slate-900 dark:text-white placeholder:text-slate-400 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all"
               />
             </div>
@@ -169,7 +202,7 @@ export default function ContactSection() {
                 name="phone"
                 value={form.phone}
                 onChange={handleChange}
-                placeholder="+91 91299 83785"
+                placeholder="+91 9120867345"
                 className="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-white/[0.05] border border-slate-200 dark:border-white/10 text-slate-900 dark:text-white placeholder:text-slate-400 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all"
               />
             </div>
@@ -202,11 +235,15 @@ export default function ContactSection() {
             />
           </div>
 
-          <PrimaryButton type="submit" icon={FiSend} className="w-full justify-center !py-3.5">
-            {submitting ? 'Sending Message...' : 'Send Message'}
+          <PrimaryButton
+            type="submit"
+            icon={FiSend}
+            className="w-full justify-center !py-3.5"
+          >
+            {submitting ? "Sending Message..." : "Send Message"}
           </PrimaryButton>
         </form>
       </div>
     </section>
-  )
+  );
 }

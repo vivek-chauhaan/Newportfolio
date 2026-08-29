@@ -1,52 +1,79 @@
-import { motion } from 'framer-motion'
-import { FiServer, FiGlobe, FiCpu, FiDatabase, FiShield, FiLayers } from 'react-icons/fi'
-import SectionTitle from '../../components/common/SectionTitle.jsx'
+import { motion } from "framer-motion";
+import {
+  FiServer,
+  FiGlobe,
+  FiCpu,
+  FiDatabase,
+  FiShield,
+  FiLayers,
+  FiMonitor,
+} from "react-icons/fi";
+import SectionTitle from "../../components/common/SectionTitle.jsx";
 
 const services = [
   {
-    icon: FiServer,
-    title: 'Backend Development',
-    description: 'Build high-performance, scalable Java & Spring Boot backend services with robust architecture and enterprise-grade reliability.',
-    tags: ['Java', 'Spring Boot', 'Microservices', 'REST'],
-    gradient: 'from-blue-500 to-indigo-600',
+    icon: FiMonitor,
+    title: "Frontend Development",
+    description:
+      "Build modern, responsive, and interactive web applications using React.js with reusable components, clean UI architecture, and optimized performance.",
+    tags: ["React.js", "JavaScript", "TailwindCSS", "Responsive UI"],
+    gradient: "from-blue-500 to-indigo-600",
   },
+
+  {
+    icon: FiServer,
+    title: "Backend Development",
+    description:
+      "Develop scalable and secure backend applications using Node.js and Express.js with clean architecture, authentication, validation, and efficient API design.",
+    tags: ["Node.js", "Express.js", "REST API", "JavaScript"],
+    gradient: "from-indigo-500 to-purple-600",
+  },
+
   {
     icon: FiGlobe,
-    title: 'Full Stack Development',
-    description: 'Craft seamless, end-to-end web applications combining responsive React / Angular frontends with resilient backend APIs.',
-    tags: ['React', 'Angular', 'TailwindCSS', 'Full-Stack'],
-    gradient: 'from-indigo-500 to-purple-600',
+    title: "Full Stack MERN Development",
+    description:
+      "Build complete end-to-end web applications by combining React.js frontends with Node.js, Express.js, and MongoDB backend solutions.",
+    tags: ["MERN", "React.js", "Node.js", "MongoDB"],
+    gradient: "from-purple-500 to-pink-600",
   },
+
   {
     icon: FiCpu,
-    title: 'API Design & Integration',
-    description: 'Design clean, well-documented, versioned RESTful APIs with Swagger/OpenAPI spec, rate limiting, and optimal payload structures.',
-    tags: ['REST API', 'Swagger', 'JSON', 'API Gateway'],
-    gradient: 'from-purple-500 to-pink-600',
+    title: "API Design & Integration",
+    description:
+      "Design and integrate reliable REST APIs with proper validation, authentication, error handling, structured responses, and third-party service integrations.",
+    tags: ["REST API", "JWT", "JSON", "API Integration"],
+    gradient: "from-purple-500 to-pink-600",
   },
+
   {
     icon: FiDatabase,
-    title: 'Database Architecture',
-    description: 'Engineer optimized relational (PostgreSQL, MySQL) and NoSQL (MongoDB, Redis) data models with index tuning & transactions.',
-    tags: ['PostgreSQL', 'MongoDB', 'Redis', 'Spring Data JPA'],
-    gradient: 'from-cyan-500 to-teal-600',
+    title: "Database Development",
+    description:
+      "Design and manage efficient database structures using MongoDB with a focus on data modeling, queries, relationships, indexing, and application performance.",
+    tags: ["MongoDB", "Mongoose", "Data Modeling", "Indexing"],
+    gradient: "from-cyan-500 to-teal-600",
   },
+
   {
     icon: FiShield,
-    title: 'Authentication & Security',
-    description: 'Implement stateless JWT authentication, refresh token rotation, OAuth2 single sign-on, and fine-grained Role-Based Access Control (RBAC).',
-    tags: ['JWT', 'Spring Security', 'OAuth2', 'RBAC'],
-    gradient: 'from-rose-500 to-amber-600',
+    title: "Authentication & Security",
+    description:
+      "Implement secure authentication and authorization systems using JWT, protected routes, role-based access control, password hashing, and secure API practices.",
+    tags: ["JWT", "RBAC", "Authentication", "Authorization"],
+    gradient: "from-rose-500 to-amber-600",
   },
+
   {
     icon: FiLayers,
-    title: 'System Design & Scalability',
-    description: 'Architect distributed systems with caching strategies, asynchronous messaging, containerized deployments, and clean domain boundary isolation.',
-    tags: ['Microservices', 'System Design', 'Docker', 'AWS'],
-    gradient: 'from-emerald-500 to-teal-600',
+    title: "Python & AI Integration",
+    description:
+      "Explore and integrate Python-based tools and AI capabilities into modern web applications to build smarter, more automated, and useful user experiences.",
+    tags: ["Python", "AI", "APIs", "Automation"],
+    gradient: "from-emerald-500 to-teal-600",
   },
-]
-
+];
 export default function ServicesSection() {
   return (
     <section id="services" className="max-w-7xl mx-auto px-5 md:px-8 py-24">
@@ -58,7 +85,7 @@ export default function ServicesSection() {
 
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
         {services.map((service, i) => {
-          const Icon = service.icon
+          const Icon = service.icon;
           return (
             <motion.div
               key={service.title}
@@ -69,11 +96,15 @@ export default function ServicesSection() {
               className="group p-8 rounded-3xl bg-white/80 dark:bg-white/[0.04] border border-slate-200/80 dark:border-white/10 backdrop-blur-xl shadow-xl hover:shadow-2xl hover:border-primary/40 transition-all duration-300 relative overflow-hidden flex flex-col justify-between"
             >
               {/* Top Accent Line */}
-              <div className={`absolute top-0 inset-x-0 h-1 bg-gradient-to-r ${service.gradient} opacity-80 group-hover:h-1.5 transition-all duration-300`} />
+              <div
+                className={`absolute top-0 inset-x-0 h-1 bg-gradient-to-r ${service.gradient} opacity-80 group-hover:h-1.5 transition-all duration-300`}
+              />
 
               <div>
                 <div className="flex items-center justify-between mb-6">
-                  <span className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${service.gradient} text-white flex items-center justify-center text-2xl shadow-lg group-hover:scale-110 transition-transform duration-300`}>
+                  <span
+                    className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${service.gradient} text-white flex items-center justify-center text-2xl shadow-lg group-hover:scale-110 transition-transform duration-300`}
+                  >
                     <Icon />
                   </span>
                   <span className="text-xs font-mono font-bold text-slate-400 dark:text-slate-500">
@@ -101,9 +132,9 @@ export default function ServicesSection() {
                 ))}
               </div>
             </motion.div>
-          )
+          );
         })}
       </div>
     </section>
-  )
+  );
 }

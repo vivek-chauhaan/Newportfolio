@@ -1,6 +1,13 @@
-import { FiEdit2, FiTrash2, FiPlus, FiInbox } from 'react-icons/fi'
+import { FiEdit2, FiTrash2, FiPlus, FiInbox } from "react-icons/fi";
 
-export default function DataTable({ columns, rows, onAdd, onEdit, onDelete, addLabel = 'Add New' }) {
+export default function DataTable({
+  columns,
+  rows,
+  onAdd,
+  onEdit,
+  onDelete,
+  addLabel = "Add New",
+}) {
   return (
     <div className="space-y-4">
       {onAdd && (
@@ -19,24 +26,37 @@ export default function DataTable({ columns, rows, onAdd, onEdit, onDelete, addL
           <thead className="bg-slate-100/70 dark:bg-white/[0.05] border-b border-slate-200/60 dark:border-white/10 font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">
             <tr>
               {columns.map((col) => (
-                <th key={col.key} className="px-5 py-4 font-bold">{col.label}</th>
+                <th key={col.key} className="px-5 py-4 font-bold">
+                  {col.label}
+                </th>
               ))}
-              {(onEdit || onDelete) && <th className="px-5 py-4 text-right">Actions</th>}
+              {(onEdit || onDelete) && (
+                <th className="px-5 py-4 text-right">Actions</th>
+              )}
             </tr>
           </thead>
           <tbody className="divide-y divide-slate-100 dark:divide-white/[0.05]">
             {rows.length === 0 && (
               <tr>
-                <td colSpan={columns.length + (onEdit || onDelete ? 1 : 0)} className="text-center py-12 text-slate-400">
+                <td
+                  colSpan={columns.length + (onEdit || onDelete ? 1 : 0)}
+                  className="text-center py-12 text-slate-400"
+                >
                   <FiInbox className="mx-auto text-3xl mb-2 text-slate-300 dark:text-slate-600" />
                   No records found. Click "{addLabel}" to create one.
                 </td>
               </tr>
             )}
             {rows.map((row) => (
-              <tr key={row.id} className="hover:bg-slate-50 dark:hover:bg-white/[0.03] transition-colors">
+              <tr
+                key={row._id}
+                className="hover:bg-slate-50 dark:hover:bg-white/[0.03] transition-colors"
+              >
                 {columns.map((col) => (
-                  <td key={col.key} className="px-5 py-4 text-slate-800 dark:text-slate-200 font-medium">
+                  <td
+                    key={col.key}
+                    className="px-5 py-4 text-slate-800 dark:text-slate-200 font-medium"
+                  >
                     {col.render ? col.render(row) : row[col.key]}
                   </td>
                 ))}
@@ -70,5 +90,5 @@ export default function DataTable({ columns, rows, onAdd, onEdit, onDelete, addL
         </table>
       </div>
     </div>
-  )
+  );
 }
