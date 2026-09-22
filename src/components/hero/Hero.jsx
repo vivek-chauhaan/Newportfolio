@@ -44,7 +44,7 @@ export default function Hero() {
             className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-500/10 dark:bg-emerald-400/15 border border-emerald-500/30 text-emerald-600 dark:text-emerald-400 text-xs font-semibold tracking-wide mb-6 shadow-sm"
           >
             <span className="w-2 h-2 rounded-full bg-emerald-500 animate-ping" />
-            🟢 Available for opportunities
+            🟢 Available for opportunities ..
           </motion.span>
 
           <motion.h1
