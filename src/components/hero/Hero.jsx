@@ -32,6 +32,8 @@ export default function Hero() {
 
   return (
     <section className="relative pt-24 pb-16 md:pt-28 md:pb-24 overflow-hidden transition-colors duration-400">
+      {/* AI Grid Overlay — faint circuit texture behind the workspace */}
+      <div className="absolute inset-0 ai-grid-overlay pointer-events-none -z-10" />
       {/* Background Radial Glow */}
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-gradient-to-tr from-primary/20 to-secondary/20 rounded-full blur-3xl pointer-events-none -z-10" />
 
@@ -44,7 +46,7 @@ export default function Hero() {
             className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-500/10 dark:bg-emerald-400/15 border border-emerald-500/30 text-emerald-600 dark:text-emerald-400 text-xs font-semibold tracking-wide mb-6 shadow-sm"
           >
             <span className="w-2 h-2 rounded-full bg-emerald-500 animate-ping" />
-            🟢 Available for opportunities ..
+            🟢 Available for opportunities 
           </motion.span>
 
           <motion.h1
@@ -188,7 +190,7 @@ export default function Hero() {
           <div className="absolute w-72 h-72 rounded-full bg-gradient-to-tr from-primary/30 to-secondary/30 blur-2xl animate-pulse-slow" />
 
           {/* IDE Terminal Window Mockup */}
-          <div className="relative w-full max-w-lg rounded-2xl bg-slate-950 border border-slate-800 shadow-2xl shadow-black/50 overflow-hidden font-mono text-xs text-slate-300">
+          <div className="hero-terminal-tilt relative w-full max-w-lg rounded-2xl bg-slate-950 border border-slate-800 shadow-2xl shadow-black/50 overflow-hidden font-mono text-xs text-slate-300">
             {/* Terminal Header Bar */}
             <div className="flex items-center justify-between px-4 py-3 bg-slate-900 border-b border-slate-800">
               <div className="flex items-center gap-2">

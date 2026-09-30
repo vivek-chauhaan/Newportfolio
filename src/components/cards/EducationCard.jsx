@@ -1,7 +1,7 @@
 export default function EducationCard({ edu }) {
   const fmt = (d) => (d ? new Date(d).getFullYear() : 'Present')
   return (
-    <div className="p-6 rounded-2xl bg-white/80 dark:bg-white/[0.04] border border-slate-200/80 dark:border-white/10 backdrop-blur-xl shadow-md hover:shadow-xl dark:shadow-black/30 hover:-translate-y-1 hover:border-primary/40 transition-all duration-300">
+    <div className="glass-3d p-6 rounded-2xl bg-white/80 dark:bg-white/[0.04] border border-slate-200/80 dark:border-white/10 backdrop-blur-xl shadow-md hover:shadow-xl dark:shadow-black/30 hover:border-primary/40">
       <div className="flex flex-wrap items-center justify-between gap-2 mb-2">
         <h3 className="font-display font-bold text-slate-900 dark:text-white text-lg">{edu.institution}</h3>
         <span className="text-xs font-mono font-semibold text-secondary dark:text-secondary-light px-2.5 py-1 rounded-md bg-secondary/10 dark:bg-secondary/20">

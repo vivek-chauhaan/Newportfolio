@@ -2,7 +2,7 @@ import { FiAward, FiExternalLink } from 'react-icons/fi'
 
 export default function CertificationCard({ cert }) {
   return (
-    <div className="p-5 rounded-2xl bg-white/80 dark:bg-white/[0.04] border border-slate-200/80 dark:border-white/10 backdrop-blur-xl shadow-md hover:shadow-xl dark:shadow-black/30 hover:-translate-y-1 hover:border-primary/40 transition-all duration-300 flex gap-4 items-start">
+    <div className="glass-3d p-5 rounded-2xl bg-white/80 dark:bg-white/[0.04] border border-slate-200/80 dark:border-white/10 backdrop-blur-xl shadow-md hover:shadow-xl dark:shadow-black/30 hover:border-primary/40 flex gap-4 items-start">
       <div className="w-12 h-12 shrink-0 rounded-2xl bg-gradient-to-tr from-primary to-secondary flex items-center justify-center text-white shadow-md shadow-primary/30">
         <FiAward size={22} />
       </div>

@@ -83,9 +83,10 @@ export default function ServicesSection() {
         subtitle="Specialized engineering capabilities focused on building robust, scalable, and maintainable software systems."
       />
 
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="perspective-grid grid md:grid-cols-2 lg:grid-cols-3 gap-6">
         {services.map((service, i) => {
           const Icon = service.icon;
+          const isWide = i === 0 || i === 3;
           return (
             <motion.div
               key={service.title}
@@ -93,7 +94,7 @@ export default function ServicesSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.08, duration: 0.5 }}
-              className="group p-8 rounded-3xl bg-white/80 dark:bg-white/[0.04] border border-slate-200/80 dark:border-white/10 backdrop-blur-xl shadow-xl hover:shadow-2xl hover:border-primary/40 transition-all duration-300 relative overflow-hidden flex flex-col justify-between"
+              className={`glass-3d neon-ring group p-8 rounded-3xl bg-white/80 dark:bg-white/[0.04] border border-slate-200/80 dark:border-white/10 backdrop-blur-xl shadow-xl hover:shadow-2xl hover:border-primary/40 relative overflow-hidden flex flex-col justify-between ${isWide ? 'lg:col-span-2' : ''}`}
             >
               {/* Top Accent Line */}
               <div

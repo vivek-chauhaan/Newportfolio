@@ -13,8 +13,8 @@ MONGO_URI=mongodb+srv://sheyanshmishra92_db_user:DEJ0T4zkgpOT4IU2@cluster0.jcp5m
 # JWT
 JWT_ACCESS_SECRET=replace_with_a_long_random_secret_for_access_tokens
 JWT_REFRESH_SECRET=replace_with_a_long_random_secret_for_refresh_tokens
-JWT_ACCESS_EXPIRES_IN=15m
-JWT_REFRESH_EXPIRES_IN=7d
+JWT_ACCESS_EXPIRES_IN=2h
+JWT_REFRESH_EXPIRES_IN=2h
 
 # CORS - comma separated list of allowed origins
 CLIENT_ORIGIN=http://localhost:5173

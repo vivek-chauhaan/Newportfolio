@@ -40,6 +40,9 @@ export default function Footer() {
 
   return (
     <footer className="mt-12 md:mt-16 border-t border-slate-200/80 dark:border-white/10 relative overflow-hidden backdrop-blur-xl bg-slate-50/80 dark:bg-bg-dark/80 text-slate-600 dark:text-slate-400">
+      {/* Aurora accent line */}
+      <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-primary/60 to-transparent" />
+      <div className="absolute -top-20 left-1/2 -translate-x-1/2 w-[420px] h-40 bg-primary/10 dark:bg-primary/15 rounded-full blur-[100px] pointer-events-none" />
       {/* Ambient Lighting */}
       <div className="absolute top-0 left-1/4 w-72 h-72 bg-primary/10 rounded-full blur-3xl pointer-events-none -z-10" />
       <div className="absolute bottom-0 right-1/4 w-72 h-72 bg-secondary/10 rounded-full blur-3xl pointer-events-none -z-10" />

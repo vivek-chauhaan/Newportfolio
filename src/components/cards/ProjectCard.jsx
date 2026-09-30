@@ -16,7 +16,7 @@ export default function ProjectCard({ project, index = 0 }) {
         whileInView="visible"
         viewport={{ once: true }}
         variants={fadeInUp}
-        className="group rounded-3xl overflow-hidden bg-white/80 dark:bg-white/[0.04] border border-slate-200/80 dark:border-white/10 backdrop-blur-xl shadow-lg hover:shadow-2xl dark:shadow-black/40 hover:-translate-y-2 hover:border-primary/50 dark:hover:border-primary/50 transition-all duration-400 flex flex-col justify-between"
+        className="glass-3d neon-ring group rounded-3xl overflow-hidden bg-white/80 dark:bg-white/[0.04] border border-slate-200/80 dark:border-white/10 backdrop-blur-xl shadow-lg hover:shadow-2xl dark:shadow-black/40 hover:border-primary/50 dark:hover:border-primary/50 flex flex-col justify-between"
       >
         <div>
           <Link to={`/projects/${project.slug}`} className="block relative overflow-hidden h-52 bg-slate-900">

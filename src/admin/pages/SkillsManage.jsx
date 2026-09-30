@@ -114,7 +114,7 @@ export default function SkillsManage() {
 
   return (
     <div>
-      <h1 className="font-display text-2xl font-bold mb-6">Skills</h1>
+      <h1 className="font-display text-2xl font-bold mb-4">Skills</h1>
 
       <DataTable
         columns={columns}

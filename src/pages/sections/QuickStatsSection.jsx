@@ -81,7 +81,7 @@ export default function QuickStatsSection() {
 
   return (
     <section ref={ref} className="max-w-7xl mx-auto px-5 md:px-8 py-10 -mt-10 relative z-20">
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+      <div className="perspective-grid grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
         {stats.map((stat, i) => {
           const Icon = stat.icon
           return (
@@ -90,7 +90,7 @@ export default function QuickStatsSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: i * 0.1, duration: 0.5 }}
-              className="group p-5 md:p-6 rounded-3xl bg-white/80 dark:bg-white/[0.04] border border-slate-200/80 dark:border-white/10 backdrop-blur-xl shadow-xl hover:shadow-2xl hover:border-primary/40 transition-all duration-300 relative overflow-hidden"
+              className="glass-3d neon-ring group p-5 md:p-6 rounded-3xl bg-white/80 dark:bg-white/[0.04] border border-slate-200/80 dark:border-white/10 backdrop-blur-xl shadow-xl hover:shadow-2xl hover:border-primary/40 relative overflow-hidden"
             >
               {/* Background Accent Blur */}
               <div className={`absolute -right-4 -bottom-4 w-20 h-20 bg-gradient-to-br ${stat.color} opacity-10 group-hover:opacity-20 blur-xl transition-opacity duration-500 rounded-full`} />

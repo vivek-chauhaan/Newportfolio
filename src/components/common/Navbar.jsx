@@ -34,7 +34,7 @@ export default function Navbar() {
       <nav className="max-w-7xl mx-auto flex items-center justify-between px-5 md:px-8">
         {/* Left: Brand Logo & Title */}
         <Link to="/" className="flex items-center gap-3 group shrink-0">
-          <div className="relative p-0.5 rounded-xl bg-gradient-to-tr from-primary via-indigo-500 to-secondary shadow-md shadow-primary/20 group-hover:scale-105 transition-transform duration-300 overflow-hidden flex items-center justify-center">
+          <div className="neon-ring relative p-0.5 rounded-xl bg-gradient-to-tr from-primary via-indigo-500 to-secondary shadow-md shadow-primary/20 group-hover:scale-105 transition-transform duration-300 overflow-hidden flex items-center justify-center">
             <img
               src={logoImg}
               alt="Amit Kumar Logo"

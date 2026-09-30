@@ -1,29 +1,92 @@
-import { motion } from 'framer-motion'
-import CountUp from 'react-countup'
-import { Link } from 'react-router-dom'
+import { motion } from "framer-motion";
+import CountUp from "react-countup";
+import { Link } from "react-router-dom";
 import {
-  FiFolder, FiCode, FiFileText, FiStar, FiBriefcase, FiBookOpen,
-  FiAward, FiMail, FiPlus, FiSettings, FiArrowRight, FiShield, FiCheckCircle, FiServer
-} from 'react-icons/fi'
-import useFetch from '../../hooks/useFetch.js'
-import dashboardService from '../../services/dashboardService.js'
-import Loader from '../../components/common/Loader.jsx'
-import { useAuth } from '../../context/AuthContext.jsx'
+  FiFolder,
+  FiCode,
+  FiFileText,
+  FiStar,
+  FiBriefcase,
+  FiBookOpen,
+  FiAward,
+  FiMail,
+  FiPlus,
+  FiSettings,
+  FiArrowRight,
+  FiShield,
+  FiCheckCircle,
+  FiServer,
+} from "react-icons/fi";
+import useFetch from "../../hooks/useFetch.js";
+import dashboardService from "../../services/dashboardService.js";
+import Loader from "../../components/common/Loader.jsx";
+import { useAuth } from "../../context/AuthContext.jsx";
 
 const STAT_CONFIG = [
-  { key: 'projects', label: 'Projects', icon: FiFolder, color: 'from-blue-500 to-indigo-600', link: '/admin/projects' },
-  { key: 'skills', label: 'Skills & Tech', icon: FiCode, color: 'from-indigo-500 to-purple-600', link: '/admin/skills' },
-  { key: 'blogs', label: 'Blog Posts', icon: FiFileText, color: 'from-purple-500 to-pink-600', link: '/admin/blogs' },
-  { key: 'reviews', label: 'Testimonials', icon: FiStar, color: 'from-amber-500 to-rose-600', link: '/admin/reviews' },
-  { key: 'experience', label: 'Experience Entries', icon: FiBriefcase, color: 'from-emerald-500 to-teal-600', link: '/admin/experience' },
-  { key: 'education', label: 'Education Entries', icon: FiBookOpen, color: 'from-cyan-500 to-blue-600', link: '/admin/education' },
-  { key: 'certifications', label: 'Certifications', icon: FiAward, color: 'from-violet-500 to-purple-600', link: '/admin/certifications' },
-  { key: 'contactMessages', label: 'Contact Messages', icon: FiMail, color: 'from-rose-500 to-red-600', link: '/admin/contact-messages' },
-]
+  {
+    key: "projects",
+    label: "Projects",
+    icon: FiFolder,
+    color: "from-blue-500 to-indigo-600",
+    link: "/admin/projects",
+  },
+  {
+    key: "skills",
+    label: "Skills & Tech",
+    icon: FiCode,
+    color: "from-indigo-500 to-purple-600",
+    link: "/admin/skills",
+  },
+  {
+    key: "blogs",
+    label: "Blog Posts",
+    icon: FiFileText,
+    color: "from-purple-500 to-pink-600",
+    link: "/admin/blogs",
+  },
+  {
+    key: "reviews",
+    label: "Testimonials",
+    icon: FiStar,
+    color: "from-amber-500 to-rose-600",
+    link: "/admin/reviews",
+  },
+  {
+    key: "experience",
+    label: "Experience Entries",
+    icon: FiBriefcase,
+    color: "from-emerald-500 to-teal-600",
+    link: "/admin/experience",
+  },
+  {
+    key: "education",
+    label: "Education Entries",
+    icon: FiBookOpen,
+    color: "from-cyan-500 to-blue-600",
+    link: "/admin/education",
+  },
+  {
+    key: "certifications",
+    label: "Certifications",
+    icon: FiAward,
+    color: "from-violet-500 to-purple-600",
+    link: "/admin/certifications",
+  },
+  {
+    key: "contactMessages",
+    label: "Contact Messages",
+    icon: FiMail,
+    color: "from-rose-500 to-red-600",
+    link: "/admin/contact-messages",
+  },
+];
 
 export default function Dashboard() {
-  const { user } = useAuth()
-  const { data: statsData, loading } = useFetch(() => dashboardService.getStats(), [])
+  const { user } = useAuth();
+  const { data: statsData, loading } = useFetch(
+    () => dashboardService.getStats(),
+    [],
+  );
 
   // Guaranteed fallback stats map so dashboard is NEVER blank
   const stats = {
@@ -36,25 +99,27 @@ export default function Dashboard() {
     certifications: 0,
     contactMessages: 0,
     ...(statsData || {}),
-  }
+  };
 
-  if (loading) return <Loader full />
+  if (loading) return <Loader full />;
 
   return (
     <div className="space-y-8">
       {/* Header Banner */}
-      <div className="p-8 rounded-3xl bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 text-white border border-slate-800 shadow-2xl relative overflow-hidden flex flex-col md:flex-row md:items-center justify-between gap-6">
+      <div className="p-5 rounded-3xl bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 text-white border border-slate-800 shadow-2xl relative overflow-hidden flex flex-col md:flex-row md:items-center justify-between gap-6">
         <div className="absolute top-0 right-0 w-96 h-96 bg-primary/20 rounded-full blur-3xl pointer-events-none" />
 
-        <div className="relative z-10 space-y-2">
-          <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/20 border border-emerald-500/40 text-emerald-400 text-xs font-bold uppercase tracking-wider">
-            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" /> System Active
+        <div className="relative z-10 space-y-1">
+          <span className="inline-flex items-center gap-2 px-2 py-1 rounded-full bg-emerald-500/20 border border-emerald-500/40 text-emerald-400 text-xs font-semibold uppercase tracking-wider">
+            <span className="w-1 h-1 rounded-full text-xs bg-emerald-400 animate-ping" />{" "}
+            System Active
           </span>
-          <h1 className="font-display font-extrabold text-2xl md:text-3xl tracking-tight">
-            Welcome back, {user?.name || 'Administrator'} 👋
+          <h1 className="font-display font-semibold text-xl md:text-2xl tracking-tight">
+            Welcome back, {user?.name || "Administrator"} 👋
           </h1>
-          <p className="text-slate-300 text-sm max-w-xl">
-            Manage your portfolio contents, update projects, monitor contact inquiries, and configure system settings.
+          <p className="text-slate-300 text-xs max-w-xl">
+            Manage your portfolio contents, update projects, monitor contact
+            inquiries, and configure system settings.
           </p>
         </div>
 
@@ -80,13 +145,15 @@ export default function Dashboard() {
           <h2 className="font-display text-lg font-bold text-slate-900 dark:text-white">
             Content Overview & Metrics
           </h2>
-          <span className="text-xs font-semibold text-slate-400">Live Backend Stats</span>
+          <span className="text-xs font-semibold text-slate-400">
+            Live Backend Stats
+          </span>
         </div>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {STAT_CONFIG.map((conf, i) => {
-            const Icon = conf.icon
-            const value = stats[conf.key] ?? 0
+            const Icon = conf.icon;
+            const value = stats[conf.key] ?? 0;
             return (
               <motion.div
                 key={conf.key}
@@ -99,7 +166,9 @@ export default function Dashboard() {
                   className="group block p-6 rounded-3xl bg-white/80 dark:bg-white/[0.04] border border-slate-200/80 dark:border-white/10 backdrop-blur-xl shadow-lg hover:shadow-xl hover:border-primary/40 transition-all duration-300 relative overflow-hidden"
                 >
                   <div className="flex items-center justify-between mb-4">
-                    <span className={`w-12 h-12 rounded-2xl bg-gradient-to-br ${conf.color} text-white flex items-center justify-center text-xl shadow-md group-hover:scale-110 transition-transform`}>
+                    <span
+                      className={`w-12 h-12 rounded-2xl bg-gradient-to-br ${conf.color} text-white flex items-center justify-center text-xl shadow-md group-hover:scale-110 transition-transform`}
+                    >
                       <Icon />
                     </span>
                     <span className="text-xs font-bold text-slate-400 group-hover:text-primary dark:group-hover:text-primary-light flex items-center gap-1 transition-colors">
@@ -116,7 +185,7 @@ export default function Dashboard() {
                   </p>
                 </Link>
               </motion.div>
-            )
+            );
           })}
         </div>
       </div>
@@ -138,7 +207,9 @@ export default function Dashboard() {
               </span>
               <div>
                 <p className="font-bold">Add / Edit Projects</p>
-                <p className="text-[10px] text-slate-400">Upload portfolio items</p>
+                <p className="text-[10px] text-slate-400">
+                  Upload portfolio items
+                </p>
               </div>
             </Link>
 
@@ -151,7 +222,9 @@ export default function Dashboard() {
               </span>
               <div>
                 <p className="font-bold">Manage Tech Skills</p>
-                <p className="text-[10px] text-slate-400">Update skill categories</p>
+                <p className="text-[10px] text-slate-400">
+                  Update skill categories
+                </p>
               </div>
             </Link>
 
@@ -164,7 +237,9 @@ export default function Dashboard() {
               </span>
               <div>
                 <p className="font-bold">Write Blog Post</p>
-                <p className="text-[10px] text-slate-400">Publish technical articles</p>
+                <p className="text-[10px] text-slate-400">
+                  Publish technical articles
+                </p>
               </div>
             </Link>
 
@@ -177,7 +252,9 @@ export default function Dashboard() {
               </span>
               <div>
                 <p className="font-bold">View Inquiries</p>
-                <p className="text-[10px] text-slate-400">Read contact messages</p>
+                <p className="text-[10px] text-slate-400">
+                  Read contact messages
+                </p>
               </div>
             </Link>
           </div>
@@ -193,25 +270,31 @@ export default function Dashboard() {
               <span className="text-slate-400 flex items-center gap-2">
                 <FiCheckCircle className="text-emerald-400" /> Backend API:
               </span>
-              <span className="font-mono font-bold text-emerald-400">Online (Spring Boot)</span>
+              <span className="font-mono font-bold text-emerald-400">
+                Online (Spring Boot)
+              </span>
             </div>
 
             <div className="flex items-center justify-between p-3 rounded-xl bg-white/5 border border-white/10">
               <span className="text-slate-400 flex items-center gap-2">
                 <FiShield className="text-secondary" /> Security:
               </span>
-              <span className="font-mono font-bold text-secondary">JWT Authenticated</span>
+              <span className="font-mono font-bold text-secondary">
+                JWT Authenticated
+              </span>
             </div>
 
             <div className="flex items-center justify-between p-3 rounded-xl bg-white/5 border border-white/10">
               <span className="text-slate-400 flex items-center gap-2">
                 <FiCode className="text-purple-400" /> Frontend Build:
               </span>
-              <span className="font-mono font-bold text-purple-400">Vite + React</span>
+              <span className="font-mono font-bold text-purple-400">
+                Vite + React
+              </span>
             </div>
           </div>
         </div>
       </div>
     </div>
-  )
+  );
 }

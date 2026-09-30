@@ -38,7 +38,7 @@ export default function SkillsSection() {
       {loading ? (
         <Loader />
       ) : (
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div className="perspective-grid grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {filtered.map((skill, i) => (
             <SkillCard key={skill.id} skill={skill} index={i} />
           ))}

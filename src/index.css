@@ -80,6 +80,138 @@
   transform: translateY(-3px);
 }
 
+/* ============================================
+   Aurora Futuristic + 3D + Bento Design Layer
+   Purely decorative utilities — no logic here.
+   ============================================ */
+
+/* Perspective wrapper for any grid/container that holds 3D-tilt cards */
+.perspective-grid {
+  perspective: 1400px;
+}
+
+/* Lightweight 3D tilt-lift, used in place of plain translate-y hovers.
+   Kept subtle & GPU-cheap (transform only) to protect performance. */
+.glass-3d {
+  transform-style: preserve-3d;
+  will-change: transform;
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.45s ease;
+}
+
+.glass-3d:hover {
+  transform: translateY(-8px) translateZ(10px) rotateX(3deg) rotateY(-3deg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .glass-3d:hover {
+    transform: translateY(-4px);
+  }
+}
+
+/* Animated neon gradient border ring — decorative wrapper, wraps existing content untouched */
+.neon-ring {
+  position: relative;
+  isolation: isolate;
+}
+
+.neon-ring::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1px;
+  background: conic-gradient(from 0deg, #8b5cf6, #06b6d4, #ec4899, #8b5cf6);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  animation: spin-gradient 6s linear infinite;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.neon-ring:hover::before {
+  opacity: 0.9;
+}
+
+@keyframes spin-gradient {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Aurora background layer: slow drifting color blobs behind the whole app */
+.aurora-layer {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(110px);
+  opacity: 0.55;
+  mix-blend-mode: screen;
+  animation: aurora-drift 22s ease-in-out infinite;
+}
+
+.dark .aurora-layer {
+  opacity: 0.5;
+}
+
+@keyframes aurora-drift {
+  0% {
+    transform: translate(0, 0) scale(1) rotate(0deg);
+  }
+  33% {
+    transform: translate(6%, 8%) scale(1.15) rotate(15deg);
+  }
+  66% {
+    transform: translate(-8%, -4%) scale(0.95) rotate(-10deg);
+  }
+  100% {
+    transform: translate(0, 0) scale(1) rotate(0deg);
+  }
+}
+
+/* Faint AI grid — subtle scanline/circuit texture behind hero-like sections */
+.ai-grid-overlay {
+  background-image:
+    linear-gradient(rgba(139, 92, 246, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(139, 92, 246, 0.08) 1px, transparent 1px);
+  background-size: 42px 42px;
+  -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 20%, #000 40%, transparent 90%);
+  mask-image: radial-gradient(ellipse 80% 60% at 50% 20%, #000 40%, transparent 90%);
+}
+
+.dark .ai-grid-overlay {
+  background-image:
+    linear-gradient(rgba(139, 92, 246, 0.14) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(139, 92, 246, 0.14) 1px, transparent 1px);
+}
+
+/* Bento cell helper — nothing structural, just consistent inner spacing rhythm */
+.bento-cell {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Base 3D resting tilt for the hero terminal mockup, with a deeper tilt on hover */
+.hero-terminal-tilt {
+  transform: perspective(1200px) rotateY(-4deg) rotateX(2deg);
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  transform-style: preserve-3d;
+}
+
+.hero-terminal-tilt:hover {
+  transform: perspective(1200px) rotateY(-8deg) rotateX(4deg) translateY(-6px) translateZ(12px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-terminal-tilt,
+  .hero-terminal-tilt:hover {
+    transform: none;
+  }
+}
+
 .gradient-text {
   background: linear-gradient(135deg, #8B5CF6 0%, #06B6D4 50%, #EC4899 100%);
   background-size: 200% auto;

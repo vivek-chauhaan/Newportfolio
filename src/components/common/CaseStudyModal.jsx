@@ -62,7 +62,7 @@ export default function CaseStudyModal({ project, isOpen, onClose }) {
             initial={{ opacity: 0, scale: 0.95, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 20 }}
-            className="relative w-full max-w-4xl bg-white dark:bg-bg-darksurface border border-slate-200 dark:border-white/10 rounded-3xl shadow-2xl overflow-hidden z-10 my-8"
+            className="neon-ring relative w-full max-w-4xl bg-white/95 dark:bg-bg-darksurface/90 backdrop-blur-2xl border border-slate-200 dark:border-white/10 rounded-3xl shadow-2xl overflow-hidden z-10 my-8"
           >
             {/* Header */}
             <div className="p-6 md:p-8 bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 text-white relative">

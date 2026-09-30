@@ -32,9 +32,11 @@ export default function Projects() {
           <Loader />
         ) : (
           <>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="perspective-grid grid sm:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-fr">
               {(data?.content || []).map((p, i) => (
-                <ProjectCard key={p.id} project={p} index={i} />
+                <div key={p.id} className={p.featured ? 'lg:col-span-2' : ''}>
+                  <ProjectCard project={p} index={i} />
+                </div>
               ))}
             </div>
             <Pagination page={page} totalPages={data?.totalPages || 0} onPageChange={setPage} />

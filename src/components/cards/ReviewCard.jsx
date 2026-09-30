@@ -2,7 +2,7 @@ import { FiStar } from 'react-icons/fi'
 
 export default function ReviewCard({ review }) {
   return (
-    <div className="p-6 rounded-3xl bg-white/80 dark:bg-white/[0.04] border border-slate-200/80 dark:border-white/10 backdrop-blur-xl shadow-lg hover:shadow-xl dark:shadow-black/30 hover:-translate-y-1 hover:border-primary/40 transition-all duration-300 w-full h-full min-h-[260px] flex flex-col justify-between">
+    <div className="glass-3d p-6 rounded-3xl bg-white/80 dark:bg-white/[0.04] border border-slate-200/80 dark:border-white/10 backdrop-blur-xl shadow-lg hover:shadow-xl dark:shadow-black/30 hover:border-primary/40 w-full h-full min-h-[260px] flex flex-col justify-between">
       <div className="flex-1 flex flex-col justify-between">
         <div>
           <div className="flex gap-1 mb-3 text-amber-400">

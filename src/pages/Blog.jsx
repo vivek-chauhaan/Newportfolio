@@ -32,12 +32,12 @@ export default function Blog() {
           <Loader />
         ) : (
           <>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="perspective-grid grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {(data?.content || []).map((post) => (
                 <Link
                   key={post.id}
                   to={`/blog/${post.slug}`}
-                  className="group rounded-3xl overflow-hidden bg-white/80 dark:bg-white/[0.04] border border-slate-200/80 dark:border-white/10 backdrop-blur-xl shadow-lg hover:shadow-2xl dark:shadow-black/40 hover:-translate-y-2 hover:border-primary/50 transition-all duration-400 flex flex-col justify-between"
+                  className="glass-3d neon-ring group rounded-3xl overflow-hidden bg-white/80 dark:bg-white/[0.04] border border-slate-200/80 dark:border-white/10 backdrop-blur-xl shadow-lg hover:shadow-2xl dark:shadow-black/40 hover:border-primary/50 flex flex-col justify-between"
                 >
                   {post.coverImage && (
                     <div className="h-44 overflow-hidden bg-slate-100 dark:bg-slate-900">

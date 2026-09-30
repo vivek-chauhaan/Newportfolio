@@ -31,7 +31,7 @@ export default function BlogSection() {
           </p>
         </div>
       ) : (
-        <div className="grid md:grid-cols-3 gap-6">
+        <div className="perspective-grid grid md:grid-cols-3 gap-6">
         {articles.map((post, i) => (
           <motion.div
             key={post.id}
@@ -42,7 +42,7 @@ export default function BlogSection() {
           >
             <Link
               to={`/blog/${post.slug}`}
-              className="group h-full rounded-3xl overflow-hidden bg-white/80 dark:bg-white/[0.04] border border-slate-200/80 dark:border-white/10 backdrop-blur-xl shadow-lg hover:shadow-2xl hover:-translate-y-2 hover:border-primary/50 transition-all duration-300 flex flex-col justify-between"
+              className="glass-3d neon-ring group h-full rounded-3xl overflow-hidden bg-white/80 dark:bg-white/[0.04] border border-slate-200/80 dark:border-white/10 backdrop-blur-xl shadow-lg hover:shadow-2xl hover:border-primary/50 flex flex-col justify-between"
             >
               <div>
                 <div className="h-48 overflow-hidden bg-slate-900 relative">
