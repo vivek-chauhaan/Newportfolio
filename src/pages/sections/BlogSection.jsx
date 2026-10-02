@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom'
-import { motion } from 'framer-motion'
 import { FiClock, FiArrowRight, FiBookOpen } from 'react-icons/fi'
 import SectionTitle from '../../components/common/SectionTitle.jsx'
 import useFetch from '../../hooks/useFetch.js'
@@ -33,12 +32,10 @@ export default function BlogSection() {
       ) : (
         <div className="perspective-grid grid md:grid-cols-3 gap-6">
         {articles.map((post, i) => (
-          <motion.div
+          <div
             key={post.id}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: i * 0.1 }}
+            data-aos="fade-up"
+            data-aos-delay={(i % 3) * 120}
           >
             <Link
               to={`/blog/${post.slug}`}
@@ -81,7 +78,7 @@ export default function BlogSection() {
                 Read Article <FiArrowRight className="ml-1" />
               </div>
             </Link>
-          </motion.div>
+          </div>
         ))}
       </div>
       )}

@@ -1,8 +1,6 @@
 import { useState } from 'react'
-import { motion } from 'framer-motion'
 import { FiGithub, FiExternalLink, FiArrowUpRight, FiBookOpen } from 'react-icons/fi'
 import { Link } from 'react-router-dom'
-import { fadeInUp } from '../../animations/variants.js'
 import CaseStudyModal from '../common/CaseStudyModal.jsx'
 
 export default function ProjectCard({ project, index = 0 }) {
@@ -10,13 +8,9 @@ export default function ProjectCard({ project, index = 0 }) {
 
   return (
     <>
-      <motion.div
-        custom={index}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        variants={fadeInUp}
-        className="glass-3d neon-ring group rounded-3xl overflow-hidden bg-white/80 dark:bg-white/[0.04] border border-slate-200/80 dark:border-white/10 backdrop-blur-xl shadow-lg hover:shadow-2xl dark:shadow-black/40 hover:border-primary/50 dark:hover:border-primary/50 flex flex-col justify-between"
+      <div data-aos="fade-up" data-aos-delay={(index % 3) * 100} className="h-full">
+      <div
+        className="glass-3d neon-ring group h-full rounded-3xl overflow-hidden bg-white/80 dark:bg-white/[0.04] border border-slate-200/80 dark:border-white/10 backdrop-blur-xl shadow-lg hover:shadow-2xl dark:shadow-black/40 hover:border-primary/50 dark:hover:border-primary/50 flex flex-col justify-between"
       >
         <div>
           <Link to={`/projects/${project.slug}`} className="block relative overflow-hidden h-52 bg-slate-900">
@@ -117,7 +111,8 @@ export default function ProjectCard({ project, index = 0 }) {
             )}
           </div>
         </div>
-      </motion.div>
+      </div>
+      </div>
 
       <CaseStudyModal
         project={project}

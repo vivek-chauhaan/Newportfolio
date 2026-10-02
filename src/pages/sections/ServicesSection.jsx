@@ -1,4 +1,3 @@
-import { motion } from "framer-motion";
 import {
   FiServer,
   FiGlobe,
@@ -88,13 +87,14 @@ export default function ServicesSection() {
           const Icon = service.icon;
           const isWide = i === 0 || i === 3;
           return (
-            <motion.div
+            <div
               key={service.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.08, duration: 0.5 }}
-              className={`glass-3d neon-ring group p-8 rounded-3xl bg-white/80 dark:bg-white/[0.04] border border-slate-200/80 dark:border-white/10 backdrop-blur-xl shadow-xl hover:shadow-2xl hover:border-primary/40 relative overflow-hidden flex flex-col justify-between ${isWide ? 'lg:col-span-2' : ''}`}
+              data-aos="fade-up"
+              data-aos-delay={(i % 3) * 100}
+              className={isWide ? 'lg:col-span-2' : ''}
+            >
+            <div
+              className={`glass-3d neon-ring group h-full p-8 rounded-3xl bg-white/80 dark:bg-white/[0.04] border border-slate-200/80 dark:border-white/10 backdrop-blur-xl shadow-xl hover:shadow-2xl hover:border-primary/40 relative overflow-hidden flex flex-col justify-between`}
             >
               {/* Top Accent Line */}
               <div
@@ -132,7 +132,8 @@ export default function ServicesSection() {
                   </span>
                 ))}
               </div>
-            </motion.div>
+            </div>
+            </div>
           );
         })}
       </div>

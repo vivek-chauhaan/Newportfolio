@@ -6,6 +6,7 @@ import ThemeToggle from "./ThemeToggle.jsx";
 import PrimaryButton from "../buttons/PrimaryButton.jsx";
 import { NAV_LINKS } from "../../constants/navLinks.js";
 import useFetch from "../../hooks/useFetch.js";
+import useActiveSection from "../../hooks/useActiveSection.js";
 import aboutService from "../../services/aboutService.js";
 import logoImg from "../../assets/images/logo.png";
 
@@ -22,6 +23,25 @@ export default function Navbar() {
   }, []);
 
   useEffect(() => setOpen(false), [location]);
+
+  // ---- Active link highlighting (presentation only) ----
+  const onHome = location.pathname === "/";
+  const sectionIds = [
+    ...NAV_LINKS.map((l) => l.to.split("#")[1]),
+    "education", // not in the nav, so it keeps "Experience" lit
+  ];
+  const scrollActive = useActiveSection(sectionIds, onHome);
+  const pathActive = location.pathname.startsWith("/projects")
+    ? "projects"
+    : location.pathname.startsWith("/blog")
+    ? "blog"
+    : "";
+  const activeId = onHome
+    ? scrollActive === "education"
+      ? "experience"
+      : scrollActive
+    : pathActive;
+  const isActive = (link) => link.to.split("#")[1] === activeId;
 
   return (
     <header
@@ -47,16 +67,31 @@ export default function Navbar() {
         </Link>
 
         {/* Center: Desktop Navigation */}
-        <div className="hidden lg:flex items-center gap-0.5 p-1.5 rounded-full bg-slate-100/80 dark:bg-white/[0.05] border border-slate-200/70 dark:border-white/10 backdrop-blur-md">
-          {NAV_LINKS.map((link) => (
-            <Link
-              key={link.label}
-              to={link.to}
-              className="relative px-3 py-1.5 rounded-full text-xs font-semibold tracking-wide text-slate-700 dark:text-slate-200 hover:text-primary dark:hover:text-primary-light hover:bg-white dark:hover:bg-white/10 transition-all duration-300 whitespace-nowrap"
-            >
-              {link.label}
-            </Link>
-          ))}
+        <div className="hidden lg:flex items-center gap-0.5 p-1.5 rounded-full bg-slate-100/80 dark:bg-white/[0.05] border border-slate-200/70 dark:border-white/10 backdrop-blur-md shadow-inner shadow-slate-200/40 dark:shadow-none">
+          {NAV_LINKS.map((link) => {
+            const active = isActive(link);
+            return (
+              <Link
+                key={link.label}
+                to={link.to}
+                aria-current={active ? "true" : undefined}
+                className={`relative px-3.5 py-1.5 rounded-full text-xs font-semibold tracking-wide transition-colors duration-300 whitespace-nowrap ${
+                  active
+                    ? "text-white"
+                    : "text-slate-700 dark:text-slate-200 hover:text-primary dark:hover:text-primary-light hover:bg-white dark:hover:bg-white/10"
+                }`}
+              >
+                {active && (
+                  <motion.span
+                    layoutId="nav-active-pill"
+                    transition={{ type: "spring", stiffness: 380, damping: 32 }}
+                    className="absolute inset-0 rounded-full bg-gradient-to-r from-primary via-purple-600 to-secondary shadow-lg shadow-primary/40"
+                  />
+                )}
+                <span className="relative z-10">{link.label}</span>
+              </Link>
+            );
+          })}
         </div>
 
         {/* Right: Actions */}
@@ -104,16 +139,31 @@ export default function Navbar() {
             className="lg:hidden overflow-hidden backdrop-blur-2xl bg-white/95 dark:bg-bg-dark/95 border-b border-slate-200 dark:border-white/10 shadow-xl"
           >
             <div className="flex flex-col gap-1.5 px-6 py-6">
-              {NAV_LINKS.map((link) => (
-                <Link
-                  key={link.label}
-                  to={link.to}
-                  onClick={() => setOpen(false)}
-                  className="flex items-center justify-end w-full px-4 py-2.5 rounded-2xl text-sm font-bold text-slate-800 dark:text-slate-200 hover:text-primary dark:hover:text-primary-light hover:bg-slate-100 dark:hover:bg-white/[0.06] transition-all text-right"
-                >
-                  {link.label}
-                </Link>
-              ))}
+              {NAV_LINKS.map((link) => {
+                const active = isActive(link);
+                return (
+                  <Link
+                    key={link.label}
+                    to={link.to}
+                    onClick={() => setOpen(false)}
+                    aria-current={active ? "true" : undefined}
+                    className={`flex items-center justify-end gap-2.5 w-full px-4 py-2.5 rounded-2xl text-sm font-bold transition-all text-right ${
+                      active
+                        ? "text-primary dark:text-primary-light bg-primary/10 dark:bg-primary/20 border border-primary/30"
+                        : "text-slate-800 dark:text-slate-200 hover:text-primary dark:hover:text-primary-light hover:bg-slate-100 dark:hover:bg-white/[0.06] border border-transparent"
+                    }`}
+                  >
+                    {link.label}
+                    <span
+                      className={`w-1.5 h-1.5 rounded-full transition-all ${
+                        active
+                          ? "bg-primary dark:bg-primary-light scale-100"
+                          : "bg-transparent scale-0"
+                      }`}
+                    />
+                  </Link>
+                );
+              })}
               <div className="mt-4 pt-4 border-t border-slate-200 dark:border-white/10 flex flex-col gap-3 w-full">
                 {about?.resumeUrl && (
                   <a

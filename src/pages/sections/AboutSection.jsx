@@ -1,4 +1,3 @@
-import { motion } from "framer-motion";
 import {
   FiDownload,
   FiCheckCircle,
@@ -91,10 +90,8 @@ export default function AboutSection() {
 
       <div className="grid lg:grid-cols-12 gap-12 items-start">
         {/* Left Column: Developer Profile Card */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+        <div
+          data-aos="fade-right"
           className="lg:col-span-5 p-8 rounded-3xl bg-white/80 dark:bg-white/[0.04] border border-slate-200/80 dark:border-white/10 backdrop-blur-xl shadow-xl space-y-6"
         >
           {/* Profile Photo */}
@@ -146,14 +143,12 @@ export default function AboutSection() {
               );
             })}
           </div>
-        </motion.div>
+        </div>
 
         {/* Right Column: Bio */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.1 }}
+        <div
+          data-aos="fade-left"
+          data-aos-delay="100"
           className="lg:col-span-7 space-y-6"
         >
           <h3 className="font-display font-extrabold text-2xl md:text-3xl text-slate-900 dark:text-white leading-tight">
@@ -236,7 +231,7 @@ export default function AboutSection() {
               </a>
             </div>
           )}
-        </motion.div>
+        </div>
       </div>
     </section>
   );

@@ -49,7 +49,7 @@ export default function Footer() {
 
       <div className="max-w-7xl mx-auto px-5 md:px-8 py-8 md:py-10">
         {/* Compact CTA Banner */}
-        <div className="mb-8 p-4 sm:p-5 rounded-2xl bg-gradient-to-r from-primary/10 via-purple-500/10 to-secondary/10 border border-primary/20 backdrop-blur-xl flex flex-col sm:flex-row items-center justify-between gap-4 shadow-md">
+        <div data-aos="fade-up" className="mb-8 p-4 sm:p-5 rounded-2xl bg-gradient-to-r from-primary/10 via-purple-500/10 to-secondary/10 border border-primary/20 backdrop-blur-xl flex flex-col sm:flex-row items-center justify-between gap-4 shadow-md">
           <div className="space-y-0.5 text-center sm:text-left">
             <h3 className="font-display font-extrabold text-base sm:text-lg text-slate-900 dark:text-white">
               Have a project or opportunity in mind?

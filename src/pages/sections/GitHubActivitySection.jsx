@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { motion } from "framer-motion";
 import {
   FiGithub,
   FiGitPullRequest,
@@ -117,10 +116,8 @@ export default function GitHubActivitySection() {
 
       <div className="grid lg:grid-cols-3 gap-6 items-stretch">
         {/* GitHub Profile Card */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+        <div
+          data-aos="fade-right"
           className="p-8 rounded-3xl bg-slate-900 text-white border border-slate-800 shadow-2xl flex flex-col justify-between relative overflow-hidden"
         >
           <div className="absolute top-0 right-0 w-48 h-48 bg-primary/20 rounded-full blur-3xl" />
@@ -189,14 +186,12 @@ export default function GitHubActivitySection() {
             View GitHub Profile
             <FiExternalLink />
           </a>
-        </motion.div>
+        </div>
 
         {/* Languages & Contribution */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.1 }}
+        <div
+          data-aos="fade-left"
+          data-aos-delay="100"
           className="lg:col-span-2 p-8 rounded-3xl bg-white/80 dark:bg-white/[0.04] border border-slate-200/80 dark:border-white/10 backdrop-blur-xl shadow-xl flex flex-col justify-between"
         >
           <div>
@@ -264,7 +259,7 @@ export default function GitHubActivitySection() {
               </div>
             </div>
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

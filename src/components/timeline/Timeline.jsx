@@ -1,4 +1,3 @@
-import { motion } from 'framer-motion'
 import { FiBriefcase, FiCalendar, FiCheckCircle } from 'react-icons/fi'
 
 export default function Timeline({ items }) {
@@ -15,12 +14,10 @@ export default function Timeline({ items }) {
   return (
     <div className="relative border-l-2 border-slate-200 dark:border-white/10 ml-3 md:ml-6 space-y-10">
       {items.map((item, i) => (
-        <motion.div
+        <div
           key={item.id || i}
-          initial={{ opacity: 0, x: -20 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: i * 0.1 }}
+          data-aos="fade-right"
+          data-aos-delay={(i % 4) * 100}
           className="ml-6 md:ml-10 relative"
         >
           {/* Glowing node marker */}
@@ -75,7 +72,7 @@ export default function Timeline({ items }) {
               </div>
             )}
           </div>
-        </motion.div>
+        </div>
       ))}
     </div>
   )

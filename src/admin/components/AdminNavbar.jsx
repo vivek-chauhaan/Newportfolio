@@ -52,7 +52,7 @@ export default function AdminNavbar({ onToggleMobileMenu }) {
           type="button"
           onClick={onToggleMobileMenu}
           className="
-               md:hidden
+            md:hidden
 
             shrink-0
 

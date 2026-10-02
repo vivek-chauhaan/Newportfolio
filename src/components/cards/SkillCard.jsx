@@ -1,18 +1,12 @@
-import { motion } from 'framer-motion'
-import { fadeInUp } from '../../animations/variants.js'
 import { FiCheckCircle, FiCode } from 'react-icons/fi'
 
 export default function SkillCard({ skill, index = 0 }) {
   const levelText = skill.proficiency >= 85 ? 'Expert' : skill.proficiency >= 70 ? 'Advanced' : 'Proficient'
 
   return (
-    <motion.div
-      custom={index}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true }}
-      variants={fadeInUp}
-      className="glass-3d group p-5 rounded-2xl bg-white/80 dark:bg-white/[0.04] border border-slate-200/80 dark:border-white/10 backdrop-blur-xl shadow-md hover:shadow-xl dark:shadow-black/30 hover:border-primary/50 dark:hover:border-primary/50 flex items-center justify-between"
+    <div data-aos="zoom-in-up" data-aos-delay={(index % 6) * 60} className="h-full">
+    <div
+      className="glass-3d h-full group p-5 rounded-2xl bg-white/80 dark:bg-white/[0.04] border border-slate-200/80 dark:border-white/10 backdrop-blur-xl shadow-md hover:shadow-xl dark:shadow-black/30 hover:border-primary/50 dark:hover:border-primary/50 flex items-center justify-between"
     >
       <div className="flex items-center gap-3.5">
         <span className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary/10 to-secondary/10 dark:from-primary/20 dark:to-secondary/20 text-primary dark:text-primary-light flex items-center justify-center text-lg font-bold group-hover:scale-110 transition-transform duration-300">
@@ -37,6 +31,7 @@ export default function SkillCard({ skill, index = 0 }) {
         <FiCheckCircle className="text-secondary text-xs" />
         <span>{levelText}</span>
       </div>
-    </motion.div>
+    </div>
+    </div>
   )
 }

@@ -17,6 +17,7 @@ export default function ReviewsSection() {
   return (
     <section id="reviews" className="max-w-7xl mx-auto px-5 md:px-8 py-20">
       <SectionTitle eyebrow="Testimonials" title="Client Reviews" />
+      <div data-aos="fade-up" data-aos-delay="100">
       <Swiper
         modules={[Autoplay, SwiperPagination]}
         spaceBetween={24}
@@ -32,6 +33,7 @@ export default function ReviewsSection() {
           </SwiperSlide>
         ))}
       </Swiper>
+      </div>
     </section>
   )
 }

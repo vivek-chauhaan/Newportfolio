@@ -142,7 +142,7 @@ export default function Dashboard() {
       {/* Metrics Grid */}
       <div>
         <div className="flex items-center justify-between mb-4">
-          <h2 className="font-display text-lg font-bold text-slate-900 dark:text-white">
+          <h2 className="font-display text-lg font-semibold text-slate-900 dark:text-white">
             Content Overview & Metrics
           </h2>
           <span className="text-xs font-semibold text-slate-400">
@@ -167,7 +167,7 @@ export default function Dashboard() {
                 >
                   <div className="flex items-center justify-between mb-4">
                     <span
-                      className={`w-12 h-12 rounded-2xl bg-gradient-to-br ${conf.color} text-white flex items-center justify-center text-xl shadow-md group-hover:scale-110 transition-transform`}
+                      className={`w-9 h-9 rounded-2xl bg-gradient-to-br ${conf.color} text-white flex items-center justify-center text-xl shadow-md group-hover:scale-110 transition-transform`}
                     >
                       <Icon />
                     </span>
@@ -176,7 +176,7 @@ export default function Dashboard() {
                     </span>
                   </div>
 
-                  <p className="font-display font-extrabold text-3xl text-slate-900 dark:text-white tracking-tight">
+                  <p className="font-display font-bold text-2xl text-slate-900 dark:text-white tracking-tight">
                     <CountUp end={value} duration={2} />
                   </p>
 

@@ -246,3 +246,29 @@
   transform: rotate(30deg) translateY(100%);
 }
 
+
+
+/* ============================================
+   Polish layer — anchors, AOS, section accents
+   ============================================ */
+
+/* Anchor links land below the fixed navbar instead of underneath it */
+section[id] {
+  scroll-margin-top: 96px;
+}
+
+/* Glow for the accent bar under every section title */
+.section-title-bar {
+  transform-origin: left center;
+  box-shadow: 0 0 18px rgba(139, 92, 246, 0.45);
+}
+
+
+/* Never let a not-yet-revealed element swallow clicks or keyboard focus */
+@media (prefers-reduced-motion: reduce) {
+  [data-aos] {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}

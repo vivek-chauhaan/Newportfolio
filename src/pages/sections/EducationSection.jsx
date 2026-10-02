@@ -14,7 +14,7 @@ export default function EducationSection() {
     <section id="education" className="max-w-7xl mx-auto px-5 md:px-8 py-24">
       <SectionTitle eyebrow="Background" title="Education & Certifications" />
       <div className="grid md:grid-cols-2 gap-10">
-        <div>
+        <div data-aos="fade-right">
           <h3 className="font-display font-semibold text-lg mb-4">Education</h3>
           {eduLoading ? (
             <Loader />
@@ -26,7 +26,7 @@ export default function EducationSection() {
             </div>
           )}
         </div>
-        <div>
+        <div data-aos="fade-left" data-aos-delay="100">
           <h3 className="font-display font-semibold text-lg mb-4">Certifications</h3>
           {certLoading ? (
             <Loader />
